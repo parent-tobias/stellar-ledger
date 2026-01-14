@@ -68,27 +68,29 @@ If not installed: [git-scm.com/downloads](https://git-scm.com/downloads)
 
 ## Step 1: Create the SvelteKit Project
 
-SvelteKit provides an interactive CLI to scaffold a new project.
+Svelte now uses a unified CLI called `sv` (replacing the old `create-svelte` command). We'll use it via `npx` with pnpm for dependency installation.
+
+**Note**: As of 2026, `npm create svelte` has been replaced with `npx sv create`. You can use it with any package manager.
 
 ```bash
 cd /path/to/your/projects/folder
-pnpm create svelte@latest stellar-ledger
+npx sv create stellar-ledger
 ```
 
 ### Interactive Prompts
 
 The CLI will ask several questions. Here's what we'll choose and why:
 
-**1. Which Svelte app template?**
+**1. Which template would you like?**
 ```
-◯ SvelteKit demo app
-◉ Skeleton project
+◯ SvelteKit minimal
+◉ SvelteKit demo
 ◯ Library project
 ```
 
-Choose: **Skeleton project**
+Choose: **SvelteKit minimal**
 
-**Why**: We're building from scratch to understand every piece. The demo app includes example code we'd just delete.
+**Why**: We're building from scratch to understand every piece. The demo includes example code we'd just delete.
 
 ---
 
@@ -109,15 +111,15 @@ Choose: **Yes, using TypeScript syntax**
 
 ---
 
-**3. Select additional options:**
+**3. What would you like to add to your project?**
 ```
-◯ Add ESLint for code linting
-◯ Add Prettier for code formatting
-◯ Add Playwright for browser testing
-◯ Add Vitest for unit testing
+◯ eslint
+◯ prettier
+◯ playwright
+◯ vitest
 ```
 
-Choose: **ESLint, Prettier, and Vitest** (use spacebar to select multiple)
+Choose: **eslint, prettier, and vitest** (use spacebar to select multiple)
 
 **Why ESLint**: Catches common mistakes and enforces code quality standards
 
@@ -129,7 +131,19 @@ Choose: **ESLint, Prettier, and Vitest** (use spacebar to select multiple)
 
 ---
 
-The CLI will create the project and install dependencies.
+**4. Which package manager do you want to install dependencies with?**
+```
+◯ npm
+◉ pnpm
+◯ yarn
+◯ bun
+```
+
+Choose: **pnpm**
+
+---
+
+The CLI will create the project and install dependencies automatically.
 
 ---
 
@@ -312,7 +326,7 @@ git add .
 ```bash
 git commit -m "Initial SvelteKit setup with TypeScript, ESLint, Prettier, and Vitest
 
-- Scaffold created via pnpm create svelte@latest
+- Scaffold created via npx sv create
 - TypeScript enabled for type safety
 - ESLint and Prettier configured for code quality
 - Vitest configured for unit testing
