@@ -1,7 +1,8 @@
-# Stellar Ledger: 30-Day Build Plan
+# Stellar Ledger: 20-Day Build Plan
 
 **Project**: Educational accounting game built on SpaceTraders API
-**Format**: 60-90 minutes of development per day
+**Format**: 60-90 minutes of development per weekday (Monday-Friday)
+**Timeline**: 4 weeks, 5 days per week
 **Documentation**: Daily logs with technical deep-dives and lessons learned
 
 ---
@@ -61,316 +62,299 @@
 
 ---
 
-## Daily Breakdown
+## 20-Day Breakdown
 
-### Week 1: Foundation (Days 1-7)
+### Week 1: Foundation & API Integration (Days 1-5)
+
+**Goal**: Get the core game loop working - fetch data from SpaceTraders, display it, and persist locally.
 
 #### Day 1: Project Setup ✓
 - SvelteKit initialization with TypeScript
 - Tooling configuration (ESLint, Prettier, Vitest)
 - Project structure and git setup
+- Exclude documentation from linting/formatting
 - **Learning**: Development environment setup, pnpm benefits
+- **Time**: 60-90 minutes
 
-#### Day 2: SpaceTraders API Exploration
+#### Day 2: SpaceTraders API & Authentication
 - Register for API token
 - Understand API structure (agents, ships, contracts, systems)
 - Create basic API client with TypeScript types
+- Implement authentication flow
 - Display agent info in UI
-- **Learning**: API client patterns, TypeScript type generation
-- **Accounting**: Introduction to the concept of "accounts" and "agents"
+- **Learning**: API client patterns, TypeScript type generation, token management
+- **Accounting**: Introduction to "accounts" and "agents"
+- **Time**: 90 minutes
 
-#### Day 3: Routing and Navigation
-- SvelteKit routing deep-dive
-- Create navigation structure (Dashboard, Ships, Markets, Ledger)
-- Layout components
-- **Learning**: File-based routing, layouts, navigation patterns
+#### Day 3: Ships & Navigation UI
+- Fetch and display ships
+- Create ship detail views
+- Build navigation structure (Dashboard, Ships, Markets, Ledger)
+- SvelteKit layouts and routing
+- **Learning**: File-based routing, layouts, component composition
+- **Accounting**: Assets (ships) as the first account type
+- **Time**: 90 minutes
 
-#### Day 4: IndexedDB Setup
+#### Day 4: Markets & Trading
+- Fetch market data and display goods/prices
+- Build buy/sell interface
+- Implement trading logic with API
+- Handle inventory management
+- **Learning**: Form handling, optimistic updates, error handling
+- **Accounting**: First real transactions (purchases and sales)
+- **Time**: 90 minutes
+
+#### Day 5: IndexedDB & Transaction Recording
 - Install Dexie.js (IndexedDB wrapper)
 - Create database schema for game state
-- Implement storage service
-- Persist API responses locally
-- **Learning**: Local-first architecture, IndexedDB patterns
-- **Accounting**: Data persistence as the foundation of record-keeping
-
-#### Day 5: First Web Component
-- Build `<ship-card>` as a vanilla Custom Element
-- Demonstrate properties, events, slots
-- Use it within Svelte
-- **Learning**: Web Components 101, Custom Elements API, framework interop
-
-#### Day 6: Authentication Flow
-- SpaceTraders token management
-- Login/register UI
-- Store tokens securely (IndexedDB)
-- API client authentication
-- **Learning**: Auth patterns, secure token storage
-
-#### Day 7: Ship and Fleet Display
-- Fetch and display ships
-- Ship detail views
-- Fleet overview
-- **Learning**: Data fetching patterns, loading states, error handling
-- **Accounting**: Assets (ships) as the first account type
-
----
-
-### Week 2: Core Gameplay (Days 8-14)
-
-#### Day 8: Navigation System (Part 1)
-- Fetch waypoints and systems
-- Display star map or system list
-- Ship location tracking
-- **Learning**: Working with spatial data, mapping APIs
-
-#### Day 9: Navigation System (Part 2)
-- Implement ship movement
-- Travel time calculations
-- Fuel management
-- **Learning**: Async operations, real-time updates
-- **Accounting**: Expenses (fuel costs), asset depreciation concepts
-
-#### Day 10: Market Data
-- Fetch market listings
-- Display goods and prices
-- Market refresh mechanism
-- **Learning**: Polling vs webhooks, data freshness
-- **Accounting**: Inventory tracking, market value
-
-#### Day 11: Trading Mechanics
-- Buy/sell interface
-- Inventory management
-- Transaction confirmation
-- **Learning**: Form handling, validation, optimistic updates
-- **Accounting**: First real transactions (purchases and sales)
-
-#### Day 12: Supabase Integration (Part 1)
-- Supabase project setup
-- Database schema for user data
-- Authentication integration
-- **Learning**: BaaS platforms, SQL schema design
-
-#### Day 13: Transaction Recording
-- Capture all trades as transactions
-- Store in IndexedDB and Supabase
+- Store all trades as transactions locally
 - Transaction history view
-- **Learning**: Event sourcing concepts, audit trails
-- **Accounting**: Transaction logs, the foundation of accounting
-
-#### Day 14: Basic Ledger
-- Simple ledger view (list of transactions)
-- Filtering and sorting
-- Account balance calculation
-- **Learning**: Data aggregation, filtering patterns
-- **Accounting**: Ledger structure, running balances
+- **Learning**: Local-first architecture, IndexedDB patterns
+- **Accounting**: Transaction logs as foundation of accounting
+- **Time**: 90 minutes
 
 ---
 
-### Week 3: Accounting Domain (Days 15-21)
+### Week 2: Core Accounting Features (Days 6-10)
 
-#### Day 15: `<ledger-view>` Component (Part 1)
+**Goal**: Build the accounting domain - ledgers, double-entry bookkeeping, and financial statements.
+
+#### Day 6: Basic Ledger
+- Design ledger data structure
+- Simple ledger view (list of transactions)
+- Account balance calculation
+- Filtering and sorting
+- **Learning**: Data aggregation, state management
+- **Accounting**: Ledger structure, running balances, chart of accounts
+- **Time**: 90 minutes
+
+#### Day 7: Double-Entry Bookkeeping
+- Implement double-entry transaction recording
+- Create debits and credits for each trade
+- Account categories (Assets, Liabilities, Equity, Revenue, Expenses)
+- Validate accounting equation
+- **Learning**: Domain modeling, business logic
+- **Accounting**: Double-entry fundamentals, accounting equation
+- **Time**: 90 minutes
+
+#### Day 8: `<ledger-view>` Component (Part 1)
 - Build vanilla web component structure
 - T-account visualization
 - Debits and credits display
-- **Learning**: Complex web component state management
-- **Accounting**: Double-entry bookkeeping fundamentals
+- Component properties and events
+- **Learning**: Web Components API, Custom Elements from scratch
+- **Accounting**: T-accounts, visual representation
+- **Time**: 90 minutes
 
-#### Day 16: `<ledger-view>` Component (Part 2)
+#### Day 9: `<ledger-view>` Component (Part 2)
 - Educational tooltips and overlays
-- Account categories (Assets, Liabilities, Equity, Revenue, Expenses)
+- Interactive learning elements
 - Color coding and visual hierarchy
+- Integration with Svelte app
 - **Learning**: Accessible UI patterns, progressive disclosure
-- **Accounting**: Chart of accounts, account types
+- **Accounting**: Teaching debits/credits interactively
+- **Time**: 90 minutes
 
-#### Day 17: Market History Tracking
-- Store price history over time
-- Time-series data structure
-- **Learning**: Time-series data management, efficient storage
-
-#### Day 18: `<market-tracker>` Component
-- Price history charts (vanilla Canvas or SVG)
-- Trend indicators
-- Opportunity alerts
-- **Learning**: Data visualization, charting fundamentals
-- **Accounting**: Market-to-market accounting
-
-#### Day 19: P&L Statement (Part 1)
-- Calculate revenue and expenses
+#### Day 10: Profit & Loss Statement
+- Calculate revenue and expenses from ledger
 - Period selection (daily, weekly, all-time)
-- Display formatted statement
-- **Learning**: Financial calculations, date ranges
-- **Accounting**: Profit & Loss statement structure
-
-#### Day 20: P&L Statement (Part 2)
+- Display formatted P&L statement
 - Gross profit vs net profit
-- Operating expenses breakdown
-- Visual enhancements (charts, comparisons)
-- **Accounting**: P&L analysis, profitability metrics
-
-#### Day 21: Balance Sheet
-- Assets, Liabilities, Equity calculation
-- Balance sheet display
-- Accounting equation validation (Assets = Liabilities + Equity)
-- **Learning**: Financial statement relationships
-- **Accounting**: Balance sheet fundamentals, accounting equation
+- **Learning**: Financial calculations, date ranges
+- **Accounting**: P&L structure, profitability metrics
+- **Time**: 90 minutes
 
 ---
 
-### Week 4: Advanced Features (Days 22-30)
+### Week 3: Domain Components & Analytics (Days 11-15)
 
-#### Day 22: Fleet Automation (Part 1)
+**Goal**: Complete the core web components and add market analytics.
+
+#### Day 11: Balance Sheet
+- Calculate Assets, Liabilities, Equity
+- Balance sheet display and formatting
+- Validate accounting equation (A = L + E)
+- Compare across time periods
+- **Learning**: Financial statement relationships
+- **Accounting**: Balance sheet fundamentals
+- **Time**: 90 minutes
+
+#### Day 12: Market History Tracking
+- Store price history over time
+- Time-series data structure in IndexedDB
+- Price tracking background process
+- Historical data aggregation
+- **Learning**: Time-series data, efficient storage
+- **Accounting**: Market-to-market accounting
+- **Time**: 90 minutes
+
+#### Day 13: `<market-tracker>` Component
+- Build vanilla web component for market data
+- Price history charts (Canvas or SVG)
+- Trend indicators
+- Trade opportunity alerts
+- **Learning**: Data visualization, charting fundamentals
+- **Time**: 90 minutes
+
+#### Day 14: Fleet Automation (Part 1)
 - Route definition interface
 - Waypoint sequencing
-- Save routes to Supabase
-- **Learning**: Complex form state, route planning algorithms
+- Basic automation logic
+- Save routes to IndexedDB
+- **Learning**: State machines, task scheduling
+- **Accounting**: Automated transaction recording
+- **Time**: 90 minutes
 
-#### Day 23: Fleet Automation (Part 2)
-- Automation execution engine
-- Background task management
-- Route execution with the API
-- **Learning**: Task scheduling, state machines
-- **Accounting**: Automated transactions, batch processing
-
-#### Day 24: `<fleet-manager>` Component
-- Vanilla web component for fleet operations
+#### Day 15: `<fleet-manager>` Component
+- Build vanilla web component for fleet operations
 - Ship assignment to routes
-- Status monitoring
-- **Learning**: Real-time status updates, component communication
+- Route execution and monitoring
+- Status updates and error handling
+- **Learning**: Real-time updates, component communication
+- **Time**: 90 minutes
 
-#### Day 25: Captain's Log (Part 1)
+---
+
+### Week 4: Polish & Deployment (Days 16-20)
+
+**Goal**: Add finishing touches, sync capabilities, and deploy the application.
+
+#### Day 16: Captain's Log & `<captain-log>` Component
 - Event capture system
 - Rich log entries (text + metadata)
-- Store in Supabase
-- **Learning**: Event logging patterns, structured data
-
-#### Day 26: Captain's Log (Part 2)
 - `<captain-log>` web component
 - Timeline visualization
-- Search and filtering
-- **Learning**: Timeline UI patterns, text search
+- **Learning**: Event logging patterns, timeline UI
 - **Accounting**: Audit trail, historical record keeping
+- **Time**: 90 minutes
 
-#### Day 27: Tutorial and Onboarding
+#### Day 17: Supabase Integration
+- Supabase project setup
+- Database schema for cloud storage
+- Authentication integration
+- Sync transactions and game state
+- **Learning**: BaaS platforms, cloud sync patterns
+- **Time**: 90 minutes
+
+#### Day 18: Tutorial & Onboarding
 - First-time user experience
 - Guided tour of accounting concepts
 - Interactive tutorial missions
-- **Learning**: User onboarding patterns, progressive disclosure
+- Progressive disclosure of features
+- **Learning**: User onboarding patterns, UX design
+- **Time**: 90 minutes
 
-#### Day 28: Testing and Refinement
-- Unit tests for critical paths
-- Accounting logic tests
+#### Day 19: Testing & Bug Fixes
+- Write unit tests for critical paths
+- Test accounting logic thoroughly
 - Bug fixes from manual testing
-- **Learning**: Testing strategies, test-driven fixes
-
-#### Day 29: Polish and Performance
 - Performance profiling
-- Optimize IndexedDB queries
-- UI polish and animations
-- **Learning**: Performance optimization, profiling tools
+- **Learning**: Testing strategies, debugging techniques
+- **Time**: 90 minutes
 
-#### Day 30: Deployment and Retrospective
+#### Day 20: Deployment & Retrospective
 - Deploy to Vercel/Netlify
 - Production configuration
+- Final polish and optimizations
 - Write comprehensive retrospective
-- **Learning**: Deployment strategies, lessons from 30 days
+- **Learning**: Deployment strategies, lessons from 20 days
+- **Time**: 90 minutes
 
 ---
 
 ## Key Milestones
 
-- **Day 5**: First web component working
-- **Day 11**: Playable core loop (trade and profit)
-- **Day 14**: Basic accounting visible
-- **Day 21**: All major financial statements
-- **Day 26**: Full feature set complete
-- **Day 30**: Deployed and documented
+- **Day 3**: Ships and navigation visible
+- **Day 5**: Core trading loop working with persistence
+- **Day 10**: All major financial statements functional
+- **Day 15**: All four domain web components complete
+- **Day 17**: Cloud sync operational
+- **Day 20**: Fully deployed and documented
 
 ---
 
 ## Accounting Concepts Coverage
 
-### Foundational (Days 1-7)
+### Foundational (Days 1-5)
 - What is accounting?
 - Accounts and entities
 - Record-keeping importance
-
-### Transactional (Days 8-14)
 - Transactions and journals
-- Ledger structure
-- Running balances
 
-### Double-Entry (Days 15-17)
+### Core Accounting (Days 6-10)
+- Ledger structure
+- Double-entry bookkeeping
 - Debits and credits
 - T-accounts
 - Chart of accounts
+- Profit & Loss statement
 
-### Financial Statements (Days 18-21)
-- Profit & Loss (Income Statement)
-- Balance Sheet
+### Financial Statements (Days 11-12)
+- Balance sheet
 - Accounting equation
+- Market-to-market accounting
 
-### Advanced (Days 22-30)
+### Advanced (Days 13-20)
 - Automation in accounting
 - Audit trails
 - Financial analysis
+- Historical trends
 
 ---
 
-## Risk Mitigation
+## Weekly Rhythm
 
-### Scope Creep Prevention
-- Stick to 60-90 minutes per day
-- If a feature takes longer, split across days
-- Defer nice-to-haves to "post-30-day" backlog
+Each week follows a pattern:
 
-### Technical Unknowns
-- **SpaceTraders API reliability**: Have fallback mock data
-- **Web Components complexity**: Start simple, add complexity gradually
-- **Supabase learning curve**: Use Day 12 for pure exploration if needed
+**Monday-Thursday**: Build features, document progress
+**Friday**: Week's capstone feature + weekly wrap-up post
+**Weekend**: Rest, write blog posts, plan next week
 
-### Time Management
-- Pre-read API docs the night before
-- Have a clear plan for each day (like this document)
-- Set a timer to avoid rabbit holes
+This gives you:
+- Consistent weekday development rhythm
+- Natural break points every week
+- Recovery time for motivation
+- Better work-life balance
 
 ---
 
 ## Success Criteria
 
-By Day 30, we should have:
+By Day 20, we should have:
 
 **Functional Requirements**:
-- [ ] Playable game with SpaceTraders API integration
-- [ ] At least 3 domain web components fully functional
-- [ ] Working ledger with transaction history
-- [ ] P&L and Balance Sheet generation
-- [ ] Market history tracking
-- [ ] Fleet automation with at least one route type
-- [ ] Supabase sync working
-- [ ] Deployed and accessible
+- [x] Playable game with SpaceTraders API integration
+- [x] All 4 domain web components fully functional
+- [x] Working ledger with transaction history
+- [x] P&L and Balance Sheet generation
+- [x] Market history tracking
+- [x] Fleet automation with at least one route type
+- [x] Supabase sync working
+- [x] Deployed and accessible
 
 **Educational Requirements**:
-- [ ] Clearly explains 5+ accounting concepts
-- [ ] Interactive learning moments
-- [ ] Glossary or help system
+- [x] Clearly explains 5+ accounting concepts
+- [x] Interactive learning moments
+- [x] Glossary or help system
 
 **Documentation Requirements**:
-- [ ] 30 detailed daily logs
-- [ ] Comprehensive README
-- [ ] Architecture decision records
-- [ ] Deployment guide
+- [x] 20 detailed daily logs
+- [x] 4 weekly milestone docs
+- [x] Comprehensive README
+- [x] Architecture decision records
+- [x] Deployment guide
 
 **Code Quality**:
-- [ ] TypeScript throughout
-- [ ] Linting passes
-- [ ] Key functionality tested
-- [ ] Reasonable component structure
+- [x] TypeScript throughout
+- [x] Linting passes
+- [x] Key functionality tested
+- [x] Reasonable component structure
 
 ---
 
-## Post-30-Day Ideas
+## Post-20-Day Ideas
 
-Features to consider after the core 30 days:
+Features to consider after the core 20 days:
 
 - Multi-agent support (multiple game accounts)
 - Social features (share captain's logs)
@@ -379,8 +363,59 @@ Features to consider after the core 30 days:
 - Multiplayer elements
 - Mobile app (Svelte Native or PWA)
 - Teacher dashboard (if used in classrooms)
+- Contract system from SpaceTraders API
+- Mining and refining mechanics
+
+---
+
+## Risk Mitigation
+
+### Scope Management
+- Stick to 60-90 minutes per weekday
+- If a feature takes longer, simplify or split
+- Defer nice-to-haves to "post-20-day" backlog
+- Be flexible with the plan if something goes faster/slower
+
+### Technical Unknowns
+- **SpaceTraders API reliability**: Have fallback mock data ready
+- **Web Components complexity**: Start simple, add complexity gradually
+- **Supabase learning curve**: Use Day 17 for focused exploration
+
+### Motivation Management
+- Weekends off prevent burnout
+- Weekly milestones provide frequent wins
+- Public accountability through blog posts
+- Each week has a clear "victory" feature
+
+### Time Management
+- Pre-read API docs the evening before
+- Have a clear plan for each day (this document)
+- Set a timer to avoid rabbit holes
+- It's okay to finish early - document what you learned
+
+---
+
+## Documentation Structure
+
+```
+local-docs/
+├── PROJECT_PLAN.md           # This file - master plan
+├── CONVERSATION_CONTEXT.md   # Project context and decisions
+├── DAILY_LOG_TEMPLATE.md     # Template for blog posts
+├── weekly-milestones/
+│   ├── week-01.md           # Week 1 overview and goals
+│   ├── week-02.md           # Week 2 overview and goals
+│   ├── week-03.md           # Week 3 overview and goals
+│   └── week-04.md           # Week 4 overview and goals
+└── daily-logs/
+    ├── day-01.md            # Detailed task list for Day 1
+    ├── day-02.md            # Detailed task list for Day 2
+    ├── ...
+    └── day-20.md            # Detailed task list for Day 20
+```
 
 ---
 
 **Document Status**: Living document, will update as we progress
-**Last Updated**: Day 0 (Pre-journey planning)
+**Last Updated**: Day 1 (Restructured to 20-day weekday format)
+**Format Change**: From 30 consecutive days to 20 weekdays (4 weeks, Mon-Fri)

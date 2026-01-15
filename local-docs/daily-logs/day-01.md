@@ -1,5 +1,8 @@
 # Day 01: Project Setup and SvelteKit Initialization
 
+**Week**: 1 of 4
+**Day**: 1 of 20 (Monday)
+
 **Objectives**:
 - [ ] Verify development environment prerequisites
 - [ ] Initialize SvelteKit project with TypeScript
@@ -358,7 +361,7 @@ git commit -m "Initial SvelteKit setup with TypeScript, ESLint, Prettier, and Vi
 - Vitest configured for unit testing
 - Custom welcome page for Day 1
 
-Day 1 of 30-day coding journey building Stellar Ledger."
+Day 1 of 20-day coding journey building Stellar Ledger."
 ```
 
 **Tag this as Day 1**:
