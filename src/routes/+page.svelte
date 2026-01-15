@@ -1,13 +1,17 @@
 <script lang="ts">
-	let projectName = "Stellar Ledger";
+	let projectName = 'Stellar Ledger';
 </script>
 
-<div class='container'>
+<div class="container">
 	<h1>Welcome to {projectName}</h1>
-	<p>A 30-day journey building an educational accounting game, building on <a href="https://spacetraders.io/">SpaceTraders</a>.</p>
+	<p>
+		A 30-day journey building an educational accounting game, building on <a
+			href="https://spacetraders.io/">SpaceTraders</a
+		>.
+	</p>
 </div>
 
-<div class='status'>
+<div class="status">
 	<p><strong>Day 1:</strong> Project Setup Complete.</p>
 </div>
 
@@ -16,7 +20,10 @@
 		max-width: 800px;
 		margin: 0 auto;
 		padding: 2rem;
-		font-family: system-ui, -apple-system, sans-serif;
+		font-family:
+			system-ui,
+			-apple-system,
+			sans-serif;
 	}
 
 	h1 {

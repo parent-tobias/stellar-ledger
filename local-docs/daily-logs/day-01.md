@@ -168,9 +168,10 @@ stellar-ledger/
 │   └── lib/              # Shared utilities and components
 ├── static/               # Static assets (served as-is)
 ├── tests/                # Vitest test files
-├── .eslintrc.cjs         # ESLint configuration
+├── eslint.config.js      # ESLint configuration (flat config)
 ├── .gitignore
 ├── .prettierrc
+├── .prettierignore       # Prettier exclusions
 ├── package.json
 ├── svelte.config.js      # SvelteKit configuration
 ├── tsconfig.json         # TypeScript configuration
@@ -197,6 +198,31 @@ stellar-ledger/
 **`vite.config.ts`**:
 - Vite is the build tool SvelteKit uses
 - We'll configure Vitest here later
+
+### Exclude Documentation from Tooling
+
+Since we're keeping project documentation in `local-docs/`, we should exclude it from linting and formatting to avoid unnecessary processing.
+
+**Add to `.prettierignore`**:
+
+```
+# Documentation
+local-docs/
+```
+
+**Add to `eslint.config.js`** (after the `includeIgnoreFile` line):
+
+```javascript
+export default defineConfig(
+	includeIgnoreFile(gitignorePath),
+	{
+		ignores: ['local-docs/**']
+	},
+	js.configs.recommended,
+	// ... rest of config
+```
+
+This prevents ESLint and Prettier from processing markdown files and other documentation, keeping your tooling focused on the actual codebase.
 
 ---
 
@@ -482,6 +508,8 @@ We'll explore the SpaceTraders API:
 
 **Files created/modified**:
 - `src/routes/+page.svelte` (modified)
+- `.prettierignore` (modified - added local-docs exclusion)
+- `eslint.config.js` (modified - added local-docs exclusion)
 - Entire SvelteKit scaffold (created)
 
 **Commits**: 1
