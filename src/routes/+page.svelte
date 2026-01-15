@@ -1,51 +1,31 @@
 <script lang="ts">
-	let projectName = 'Stellar Ledger';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { agentToken, isAccountConnected } from '$lib/stores/auth';
+
+	onMount(() => {
+		if (!$isAccountConnected) {
+			// First-time setup - need account token
+			goto('/setup');
+		} else if ($agentToken) {
+			// Have both tokens - go to dashboard
+			goto('/dashboard');
+		} else {
+			// Have account but no agent - register one
+			goto('/register');
+		}
+	});
 </script>
 
 <div class="container">
-	<h1>Welcome to {projectName}</h1>
-	<p>
-		A 30-day journey building an educational accounting game, building on <a
-			href="https://spacetraders.io/">SpaceTraders</a
-		>.
-	</p>
-</div>
-
-<div class="status">
-	<p><strong>Day 1:</strong> Project Setup Complete.</p>
+	<p>Loading...</p>
 </div>
 
 <style>
 	.container {
 		max-width: 800px;
-		margin: 0 auto;
+		margin: 2rem auto;
 		padding: 2rem;
-		font-family:
-			system-ui,
-			-apple-system,
-			sans-serif;
-	}
-
-	h1 {
-		color: #4a5568;
-		margin-bottom: 0.5rem;
-	}
-
-	p {
-		color: #718096;
-		line-height: 1.6;
-	}
-
-	.status {
-		margin-top: 2rem;
-		padding: 1rem;
-		background-color: #f0fff4;
-		border-left: 4px solid #48bb78;
-		border-radius: 4px;
-	}
-
-	.status p {
-		margin: 0;
-		color: #2d3748;
+		text-align: center;
 	}
 </style>

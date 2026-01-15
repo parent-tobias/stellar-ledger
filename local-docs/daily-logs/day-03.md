@@ -7,6 +7,7 @@
 - [ ] Fetch and display ship data from SpaceTraders API
 - [ ] Create ship detail views with status and cargo information
 - [ ] Build navigation structure with layouts and routing
+- [ ] Establish CSS custom properties for consistent theming
 - [ ] Implement Dashboard, Ships, Markets, and Ledger pages
 - [ ] Set up SvelteKit file-based routing structure
 - [ ] Introduce ships as assets in accounting context
@@ -49,13 +50,15 @@ Build detailed view showing full ship information including cargo, fuel, and sta
 - What data to emphasize (current location, cargo capacity, condition)
 - Navigation back to list view
 
-### Task 4: Navigation Layout
-Set up SvelteKit layouts with navigation menu for Dashboard, Ships, Markets, and Ledger sections.
+### Task 4: Navigation Layout & Design Foundation
+Set up SvelteKit layouts with navigation menu for Dashboard, Ships, Markets, and Ledger sections. Also establish CSS custom properties for consistent theming.
 
 **Key decisions**:
 - Where to place navigation (sidebar, top bar, or both)
 - Active route highlighting
 - Mobile-responsive navigation approach
+- CSS custom properties for colors, spacing, and typography
+- Refactoring Day 2 hardcoded colors to use theme variables
 
 ### Task 5: Page Structure
 Create placeholder pages for Dashboard, Markets, and Ledger to complete navigation.
@@ -81,6 +84,8 @@ By end of day, you should have:
 - Working ship list displaying all agent's ships
 - Detail view for individual ships with full information
 - Navigation menu connecting Dashboard, Ships, Markets, and Ledger
+- CSS custom properties established for theming (colors, spacing)
+- Day 2 pages refactored to use theme variables
 - Basic page structure for all main sections
 - Understanding of ships as accounting assets
 
@@ -88,8 +93,55 @@ By end of day, you should have:
 
 ## Key Learning
 
-**Technical**: SvelteKit file-based routing, layouts, and component composition patterns
+**Technical**: SvelteKit file-based routing, layouts, component composition patterns, and CSS custom properties for theming
 **Accounting**: Assets as the first account type - understanding what you own and its value
+
+---
+
+## Design Foundation Preview
+
+The layout will establish CSS custom properties that all components can use:
+
+```css
+:root {
+	/* Colors - Neutral */
+	--color-bg: #ffffff;
+	--color-bg-secondary: #f7fafc;
+	--color-border: #e2e8f0;
+	--color-text: #2d3748;
+	--color-text-muted: #718096;
+
+	/* Colors - Semantic */
+	--color-primary: #4a5568;
+	--color-primary-hover: #2d3748;
+	--color-error: #c53030;
+	--color-error-bg: #fed7d7;
+	--color-success: #2f855a;
+	--color-success-bg: #c6f6d5;
+
+	/* Spacing */
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2rem;
+
+	/* Border radius */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+
+	/* Typography */
+	--font-mono: ui-monospace, monospace;
+}
+```
+
+This gives us:
+- **Single source of truth** for colors - change once, update everywhere
+- **Dark mode ready** - swap the `:root` values and the whole app changes
+- **Semantic naming** - `--color-error` is clearer than `#c53030`
+- **Consistent spacing** - no more guessing between `1rem` and `1.5rem`
+
+Day 2's hardcoded colors like `background: #f7fafc` become `background: var(--color-bg-secondary)`.
 
 ---
 
@@ -100,12 +152,14 @@ Day 04 will build the markets and trading interface, allowing you to buy and sel
 ---
 
 **Files to create/modify**:
+- `src/routes/+layout.svelte` (navigation + CSS custom properties)
 - `src/routes/ships/+page.svelte`
 - `src/routes/ships/[shipId]/+page.svelte`
-- `src/routes/+layout.svelte`
 - `src/routes/dashboard/+page.svelte`
 - `src/routes/markets/+page.svelte`
 - `src/routes/ledger/+page.svelte`
+- `src/routes/setup/+page.svelte` (refactor to use theme variables)
+- `src/routes/register/+page.svelte` (refactor to use theme variables)
 - `src/lib/api/ships.ts`
 - `src/lib/stores/ships.ts`
 
